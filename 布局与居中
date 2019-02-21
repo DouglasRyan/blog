@@ -1,0 +1,81 @@
+一、左右布局
+    子元素使用{float：left}
+    父元素使用clearfix类
+    .clearfix::after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+二、左中右布局
+    子元素使用 {
+        float: left;
+        width: 33%;             //自己定义宽度
+        box-sizing: border-box;
+    }
+    父元素使用clearfix类
+    .clearfix::after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+三、水平居中
+    1、行内元素的水平居中
+        如果被设置的元素为文本、图片等行内元素时，在父元素中设置text-align:center实现行内元素水平居中，将子元素的设置为display:inline-block，使子元素变成行内元素；
+
+    2、块状元素的水平居中（定宽）
+        当被设置元素为定宽块级元素时用text-align:center;就不起作用了。可以通过设置“margin: 0 auto;”来实现居中。
+
+    3、块状元素的水平居中（不定宽）
+           有一些“不定宽度的块级元素”设置居中，如网页上的分页导航，因为分页的数量是不确定的，所以，不能通过设置宽度来限制它的弹性。
+            可以直接给不定宽的块级元素设置text-align:center;来实现，也可以给父元素加text-align:center;来实现居中效果。
+              当不定宽块级元素的宽度不要占一行时，可以设置display为inline类型或inline-block（设置为行内元素显示或行内块元素）。
+四、垂直居中
+        垂直居中，首先需设定两个条件——父元素是盒子容器且高度已经设定。
+
+    1、子元素是行内元素，高度是由其内文档 流决定的。
+        通过设定父元素的line-height为其高度来使得子元素垂直居中。
+
+    2、子元素是块级元素但子元素高度没有设定。
+        不知道子元素的高度的，无法通过计算得到padding或margin来调整。通过给父元素设定display:table-cell;vertical-align:middle;来处理。
+
+    3、子元素是块级元素且高度已经设定
+        计算子元素的margin-top或margin-bottom，计算方法为父（元素高度-子元素高度）/ 2；
+
+五、水平垂直居中
+    1、水平对齐+行高
+        text-align:center + line-height实现单行文本水平垂直居中
+
+    2、水平+垂直对齐
+        1）text-align:center + vertical-align 在父元素设置text-align和vertical-align，并将父元素设置为table-cell元素，子元素设置为inline-block元素。
+        2)若子元素是图像，可不使用table-cell，而是其父元素用行高代替高度，且字体大小设为0。子元素本身设置vertical-align:middle;
+        3)相对+绝对定位
+        使用absolute，利用绝对定位元素的盒模型特性，在偏移属性为确定值的基础上，设置margin: auto;
+
+
+六、阴阳
+        div做
+    做圆形 border-radius
+            width:200px;
+            height:200px;
+            border:1px solid red;
+            border-radius:50%;
+        div做
+        伪元素做
+        border做
+    颜色渐变
+        http://www.colorzilla.com/gradient-editor/
+        background: linear-gradient(to bottom, #ffffff 0%,#ffffff 50%,#000000 50%);  
+    动画
+        animation-duration:1.5s;
+        animation-name:spin;
+        animation-iteration-count:infinite;
+        animation-timing-function:linear;
+        @keyframes spin{
+            from{
+                transform:rotate(0deg);
+            }
+            to{
+                transform:rotate(360deg);
+            }
+            }   
